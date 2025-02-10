@@ -1,4 +1,4 @@
-# QuanLyGaraOto
+# Web GELA Fashion
 
 Mô tả ngắn về dự án ở đây.
 
@@ -15,7 +15,7 @@ git clone https://github.com/ADELA-04/gela.git
 ```
 Hướng dẫn cách cập nhật code "pull code về"
 ```
-cd gela
+cd DoThiThom
 git pull origin main
 ```
 
