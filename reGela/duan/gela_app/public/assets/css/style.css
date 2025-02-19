@@ -1782,8 +1782,7 @@ nav > ul > li.menu-item-has-children:hover > .megamenu-wrap {
 .active_head{
     color: var(--color4); !important
     font-weight: bold; /* Match hover font weight */
-    padding: 4px 5px 3px;
-    line-height: .8;
+
 
 }
 .megamenu-cards-wrap .post-box2 {margin-bottom: 1.25rem;}

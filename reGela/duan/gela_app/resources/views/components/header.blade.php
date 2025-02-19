@@ -5,7 +5,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/uicons-regular-rounded.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
@@ -52,7 +52,7 @@
                         <nav>
                             <ul>
                                 <li class=" {{ request()->is('') ? 'active_head' : '' }}"><a href="{{ asset('') }}" title="">Home</a></li>
-                                <li class="menu-item-has-children megamenu-item"><a href="javascript:void(0);"
+                                <li class="menu-item-has-children megamenu-item {{ request()->is('products/product_list') ? 'active_head' : '' }}"><a href="{{ route('products.product_list') }}"
                                         title="">Woments</a>
                                     <div class="megamenu-wrap position-absolute w-100">
                                         <div class="container">
@@ -286,11 +286,6 @@
                                     <button type="submit"><i class="fi fi-rr-search"></i></button>
                                     <input type="search" placeholder="Search">
                                 </form>
-                            </li>
-
-                            <li>
-                                <a class="cart-trigger d-inline-block" href="javascript:void(0);" title=""><i
-                                        class="fi fi-rr-shopping-bag"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -536,11 +531,6 @@
                             </form>
 
                         </li>
-
-                        <li>
-                            <a class="cart-trigger d-inline-block" href="javascript:void(0);" title=""><i
-                                    class="fi fi-rr-shopping-bag"></i></a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -660,16 +650,13 @@
             <div class="container">
                 <div class="responsive-topbar-inner d-flex flex-wrap align-items-center justify-content-between w-100">
                     <div class="logo">
-                        <h1 class="mb-0"><a href="index.html" title="Home"><img src="assets/images/logo.svg"
+                        <h1 class="mb-0"><a href="index.html" title="Home"><img src="{{ asset('assets/images/logo.svg') }}"
                                     alt="Logo"></a></h1>
                     </div><!-- Logo -->
                     <div class="logo-menu-inner-right d-flex flex-wrap align-items-center justify-content-end">
                         <ul class="wishlist-and-cart d-flex flex-wrap align-items-center mb-0 list-unstyled">
 
-                            <li>
-                                <a class="cart-trigger d-inline-block" href="javascript:void(0);" title=""><i
-                                        class="fi fi-rr-shopping-bag"></i></a>
-                            </li>
+
                             <li>
                                 <a class="responsive-menu-trigger d-inline-block" href="javascript:void(0);"
                                     title=""><i class="fi fi-rr-align-justify"></i></a>
