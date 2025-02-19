@@ -43,232 +43,58 @@
         <div class="main-content-inner">
             <!-- main-content-wrap -->
             <div class="main-content-wrap">
-                <div class="tf-section-3">
-                    <!-- top-product -->
-                    <div class="wg-box">
-                        <div class="flex items-center justify-between">
-                            <h5>Top product</h5>
-                            <div class="dropdown default">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a href="javascript:void(0);">This Week</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">Last Week</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="wg-table table-top-product-1">
-                            <ul class="table-title flex gap10 mb-14">
-                                <li>
-                                    <div class="body-title">Product</div>
-                                </li>
-                                <li>
-                                    <div class="body-title">Review</div>
-                                </li>
-                                <li>
-                                    <div class="body-title">Sold</div>
-                                </li>
-                                <li>
-                                    <div class="body-title">Profit</div>
-                                </li>
-                            </ul>
-                            <ul class="flex flex-column gap18">
-                                <li class="product-item">
-                                    <div class="image small no-bg">
-                                        <img src="images/products/36.png" alt="">
-                                    </div>
-                                    <div class="flex items-center justify-between flex-grow">
-                                        <div class="name">
-                                            <a href="product-list.html" class="body-text">Prodotti per il
-                                                tuo cane...</a>
-                                        </div>
-                                        <div>
-                                            <div class="rating-number">
-                                                <div class="icon">
-                                                    <i class="icon-star1"></i>
-                                                </div>
-                                                <div class="number body-text">4.7</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">120</div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">$16.960</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item">
-                                    <div class="image small no-bg">
-                                        <img src="images/products/37.png" alt="">
-                                    </div>
-                                    <div class="flex items-center justify-between flex-grow">
-                                        <div class="name">
-                                            <a href="product-list.html" class="body-text">Wholesome
-                                                Pride...</a>
-                                        </div>
-                                        <div>
-                                            <div class="rating-number">
-                                                <div class="icon">
-                                                    <i class="icon-star1"></i>
-                                                </div>
-                                                <div class="number body-text">4.7</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">120</div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">$16.960</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item">
-                                    <div class="image small no-bg">
-                                        <img src="images/products/38.png" alt="">
-                                    </div>
-                                    <div class="flex items-center justify-between flex-grow">
-                                        <div class="name">
-                                            <a href="product-list.html" class="body-text">Beneful Baked
-                                                Delights...</a>
-                                        </div>
-                                        <div>
-                                            <div class="rating-number">
-                                                <div class="icon">
-                                                    <i class="icon-star1"></i>
-                                                </div>
-                                                <div class="number body-text">4.7</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">120</div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">$16.960</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item">
-                                    <div class="image small no-bg">
-                                        <img src="images/products/39.png" alt="">
-                                    </div>
-                                    <div class="flex items-center justify-between flex-grow">
-                                        <div class="name">
-                                            <a href="product-list.html" class="body-text">Taste of the
-                                                Wild...</a>
-                                        </div>
-                                        <div>
-                                            <div class="rating-number">
-                                                <div class="icon">
-                                                    <i class="icon-star1"></i>
-                                                </div>
-                                                <div class="number body-text">4.7</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">120</div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">$16.960</div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product-item">
-                                    <div class="image small no-bg">
-                                        <img src="images/products/40.png" alt="">
-                                    </div>
-                                    <div class="flex items-center justify-between flex-grow">
-                                        <div class="name">
-                                            <a href="product-list.html" class="body-text">Canagan -
-                                                Britain's...</a>
-                                        </div>
-                                        <div>
-                                            <div class="rating-number">
-                                                <div class="icon">
-                                                    <i class="icon-star1"></i>
-                                                </div>
-                                                <div class="number body-text">4.7</div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">120</div>
-                                        </div>
-                                        <div>
-                                            <div class="body-text">$16.960</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- top-product -->
-                    <!-- earnings -->
-                    <div class="wg-box">
-                        <div class="flex items-center justify-between">
-                            <h5>Earnings</h5>
-                            <div class="dropdown default">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="icon-more"><i class="icon-more-horizontal"></i></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a href="javascript:void(0);">This Week</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);">Last Week</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="line-chart-9"></div>
-                        <div class="flex flex-wrap gap40 justify-center">
-                            <div>
-                                <div class="mb-2">
-                                    <div class="block-legend">
-                                        <div class="dot t1"></div>
-                                        <div class="text-tiny">Revenue</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap10">
-                                    <h4>$37,802</h4>
-                                    <div class="box-icon-trending up">
-                                        <i class="icon-trending-up"></i>
-                                        <div class="body-title number">0.56%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="mb-2">
-                                    <div class="block-legend">
-                                        <div class="dot t2"></div>
-                                        <div class="text-tiny">Profit</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap10">
-                                    <h4>$28,305</h4>
-                                    <div class="box-icon-trending up">
-                                        <i class="icon-trending-up"></i>
-                                        <div class="body-title number">0.56%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- earnings -->
+                <div class="tf-section-3 ">
                     <!-- website-visitors -->
                     <div class="wg-box">
                         <div class="flex items-center justify-between">
                             <h5>Website visitors</h5>
                             <div class="dropdown default">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon-more"><i class="icon-more-horizontal"></i></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a href="javascript:void(0);">This Week</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Last Week</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="line-chart-10"></div>
+                    </div>
+                    <!-- website-visitors -->
+                    <!-- website-visitors -->
+                    <div class="wg-box">
+                        <div class="flex items-center justify-between">
+                            <h5>Product visitors</h5>
+                            <div class="dropdown default">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon-more"><i class="icon-more-horizontal"></i></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a href="javascript:void(0);">This Week</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Last Week</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="line-chart-10"></div>
+                    </div>
+                    <!-- website-visitors -->
+                    <!-- website-visitors -->
+                    <div class="wg-box">
+                        <div class="flex items-center justify-between">
+                            <h5>Blogs visitors</h5>
+                            <div class="dropdown default">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
                                     <span class="icon-more"><i class="icon-more-horizontal"></i></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -291,10 +117,9 @@
                         <div class="flex items-center justify-between">
                             <h5>Recent orders</h5>
                             <div class="dropdown default">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="view-all">View all<i
-                                            class="icon-chevron-down"></i></span>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <span class="view-all">View all<i class="icon-chevron-down"></i></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
@@ -317,9 +142,7 @@
                                 <li>
                                     <div class="body-title">Product ID</div>
                                 </li>
-                                <li>
-                                    <div class="body-title">Quantity</div>
-                                </li>
+
                                 <li>
                                     <div class="body-title">Price</div>
                                 </li>
@@ -331,7 +154,7 @@
                             <ul class="flex flex-column gap10">
                                 <li class="product-item gap14">
                                     <div class="image no-bg">
-                                        <img src="images/products/31.png" alt="">
+                                        <img src="{{ asset('assets/images/products/31.png') }}" alt="">
                                     </div>
                                     <div class="flex items-center justify-between flex-grow gap20">
                                         <div class="name">
@@ -340,7 +163,7 @@
                                         </div>
                                         <div class="body-text">2,672</div>
                                         <div class="body-text">$28,672.36</div>
-                                        <div class="body-text">X1</div>
+
                                         <div class="body-text">$28,672.36</div>
                                         <div>
                                             <div class="block-available">Delivered</div>
@@ -350,7 +173,7 @@
                                 <li class="divider"></li>
                                 <li class="product-item gap14">
                                     <div class="image no-bg">
-                                        <img src="images/products/32.png" alt="">
+                                        <img src="{{ asset('assets/images/products/32.png') }}" alt="">
                                     </div>
                                     <div class="flex items-center justify-between flex-grow gap20">
                                         <div class="name">
@@ -359,7 +182,7 @@
                                         </div>
                                         <div class="body-text">2,672</div>
                                         <div class="body-text">$28,672.36</div>
-                                        <div class="body-text">X2</div>
+
                                         <div class="body-text">$28,672.36</div>
                                         <div>
                                             <div class="block-available">Delivered</div>
@@ -369,7 +192,7 @@
                                 <li class="divider"></li>
                                 <li class="product-item gap14">
                                     <div class="image no-bg">
-                                        <img src="images/products/33.png" alt="">
+                                        <img src="{{ asset('assets/images/products/33.png') }}" alt="">
                                     </div>
                                     <div class="flex items-center justify-between flex-grow gap20">
                                         <div class="name">
@@ -378,7 +201,7 @@
                                         </div>
                                         <div class="body-text">2,672</div>
                                         <div class="body-text">$28,672.36</div>
-                                        <div class="body-text">X1</div>
+
                                         <div class="body-text">$28,672.36</div>
                                         <div>
                                             <div class="block-available">Delivered</div>
@@ -388,7 +211,7 @@
                                 <li class="divider"></li>
                                 <li class="product-item gap14">
                                     <div class="image no-bg">
-                                        <img src="images/products/34.png" alt="">
+                                        <img src="{{ asset('assets/images/products/34.png') }}" alt="">
                                     </div>
                                     <div class="flex items-center justify-between flex-grow gap20">
                                         <div class="name">
@@ -397,7 +220,7 @@
                                         </div>
                                         <div class="body-text">2,672</div>
                                         <div class="body-text">$28,672.36</div>
-                                        <div class="body-text">X3</div>
+
                                         <div class="body-text">$28,672.36</div>
                                         <div>
                                             <div class="block-available">Delivered</div>
@@ -407,7 +230,7 @@
                                 <li class="divider"></li>
                                 <li class="product-item gap14">
                                     <div class="image no-bg">
-                                        <img src="images/products/35.png" alt="">
+                                        <img src="{{ asset('assets/images/products/35.png') }}" alt="">
                                     </div>
                                     <div class="flex items-center justify-between flex-grow gap20">
                                         <div class="name">
@@ -416,7 +239,7 @@
                                         </div>
                                         <div class="body-text">2,672</div>
                                         <div class="body-text">$28,672.36</div>
-                                        <div class="body-text">X2</div>
+
                                         <div class="body-text">$28,672.36</div>
                                         <div>
                                             <div class="block-available">Delivered</div>
@@ -455,18 +278,9 @@
             <!-- /main-content-wrap -->
         </div>
         <!-- /main-content-wrap -->
-        <!-- bottom-page -->
-        <div class="bottom-page">
-            <div class="body-text">Copyright © 2024 Remos. Design with</div>
-            <i class="icon-heart"></i>
-            <div class="body-text">by <a
-                    href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights
-                reserved.</div>
-        </div>
-        <!-- /bottom-page -->
+
     </div>
     <!-- /main-content -->
-
 @endsection
 
 {{-- script --}}

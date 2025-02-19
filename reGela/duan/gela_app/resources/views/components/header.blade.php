@@ -306,7 +306,7 @@
                     <nav>
                         <ul>
                             <li class=" megamenu-item"><a href="javascript:void(0);" title="">Home</a>
-                            <li class="menu-item-has-children megamenu-item"><a href="javascript:void(0);"
+                            <li class="menu-item-has-children megamenu-item {{ request()->is('products/product_list') ? 'active_head' : '' }}"><a href="{{ route('products.product_list') }}"
                                     title="">Woments</a>
                                 <div class="megamenu-wrap position-absolute w-100">
                                     <div class="container">

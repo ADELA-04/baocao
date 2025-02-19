@@ -34,11 +34,13 @@
                 <div class="center-item">
                     <div class="center-heading">Manager</div>
                     <ul class="menu-list">
-                        <li class="menu-item {{ request()->is('managers/m_product/manager_product') ? 'active' : '' }}">
+                        <li class="menu-item {{ request()->is('managers/m_product/manager_product') || request()->is('managers/m_product/add_product') || request()->is('managers/m_product/update_product') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_product.manager_product') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-shopping-cart"></i></div>
                                 <div class="text">Products</div>
-                            </a>
+                            </a><!-- Menu item content -->
+                        </li>
+
 
                         </li>
                         <li class="menu-item {{ request()->is('managers/m_category/manager_category') ? 'active' : '' }}">

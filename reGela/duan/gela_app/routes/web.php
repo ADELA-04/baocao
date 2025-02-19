@@ -41,6 +41,15 @@ Route::get('/template_admin', function () {
 Route::get('/managers/m_product/manager_product', function () {
     return view('managers/m_product/manager_product');
 })->name('managers.m_product.manager_product');
+
+Route::get('/managers/m_product/add_product', function () {
+    return view('managers/m_product/add_product');
+})->name('managers.m_product.add_product');
+
+Route::get('/managers/m_product/update_product', function () {
+    return view('managers/m_product/update_product');
+})->name('managers.m_product.update_product');
+
 Route::get('/managers/m_category/manager_category', function () {
     return view('managers/m_category/manager_category');
 })->name('managers.m_category.manager_category');
