@@ -71,9 +71,9 @@ Route::get('/managers/m_blog/add_blog', function () {
     return view('managers/m_blog/add_blog');
 })->name('managers.m_blog.add_blog');
 
-Route::get('/managers/m_blog/add_blog', function () {
-    return view('managers/m_blog/add_blog');
-})->name('managers.m_blog.add_blog');
+Route::get('/managers/m_blog/update_blog', function () {
+    return view('managers/m_blog/update_blog');
+})->name('managers.m_blog.update_blog');
 
 
 Route::get('/managers/m_user/manager_user', function () {
