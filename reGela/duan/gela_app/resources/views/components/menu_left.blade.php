@@ -50,7 +50,7 @@
                             </a>
 
                         </li>
-                        <li class="menu-item {{ request()->is('managers/m_blog/manager_blog') ? 'active' : '' }}">
+                        <li class="menu-item {{ request()->is('managers/m_blog/manager_blog') || request()->is('managers/m_blog/add_blog') || request()->is('managers/m_blog/update_blog') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_blog.manager_blog') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-file-plus"></i></div>
                                 <div class="text">Blog</div>
@@ -58,7 +58,7 @@
 
                         </li>
 
-                        <li class="menu-item {{ request()->is('managers/m_user/manager_user') ? 'active' : '' }}">
+                        <li class="menu-item {{ request()->is('managers/m_user/manager_user') || request()->is('managers/m_user/add_user') || request()->is('managers/m_user/update_user') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_user.manager_user') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-user"></i></div>
                                 <div class="text">User</div>

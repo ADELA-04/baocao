@@ -84,6 +84,6 @@ Route::get('/managers/m_user/add_user', function () {
     return view('managers/m_user/add_user');
 })->name('managers.m_user.add_user');
 
-Route::get('/managers/m_user/add_user', function () {
-    return view('managers/m_user/add_user');
-})->name('managers.m_user.add_user');
+Route::get('/managers/m_user/update_user', function () {
+    return view('managers/m_user/update_user');
+})->name('managers.m_user.update_user');
