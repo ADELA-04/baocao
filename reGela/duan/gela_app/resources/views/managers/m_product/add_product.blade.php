@@ -133,6 +133,16 @@
                                             </select>
                                         </div>
                                     </fieldset>
+                                    <fieldset class="brand">
+                                        <div class="body-title mb-10">Is visible <span class="tf-color-1">*</span></div>
+                                        <div class="select">
+                                            <select class="">
+                                                <option>Yes</option>
+                                                <option>No</option>
+
+                                            </select>
+                                        </div>
+                                    </fieldset>
                                     <div class="cols gap10">
                                         <button class="tf-button w-full" type="submit">Save product</button>
                                         <button class="tf-button style-1 w-full" type="submit">Cancel</button>

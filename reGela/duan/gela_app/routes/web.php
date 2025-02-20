@@ -53,9 +53,37 @@ Route::get('/managers/m_product/update_product', function () {
 Route::get('/managers/m_category/manager_category', function () {
     return view('managers/m_category/manager_category');
 })->name('managers.m_category.manager_category');
+
+Route::get('/managers/m_category/add_category', function () {
+    return view('managers/m_category/add_category');
+})->name('managers.m_category.add_category');
+
+Route::get('/managers/m_category/update_category', function () {
+    return view('managers/m_category/update_category');
+})->name('managers.m_category.update_category');
+
+
 Route::get('/managers/m_blog/manager_blog', function () {
     return view('managers/m_blog/manager_blog');
 })->name('managers.m_blog.manager_blog');
+
+Route::get('/managers/m_blog/add_blog', function () {
+    return view('managers/m_blog/add_blog');
+})->name('managers.m_blog.add_blog');
+
+Route::get('/managers/m_blog/add_blog', function () {
+    return view('managers/m_blog/add_blog');
+})->name('managers.m_blog.add_blog');
+
+
 Route::get('/managers/m_user/manager_user', function () {
     return view('managers/m_user/manager_user');
 })->name('managers.m_user.manager_user');
+
+Route::get('/managers/m_user/add_user', function () {
+    return view('managers/m_user/add_user');
+})->name('managers.m_user.add_user');
+
+Route::get('/managers/m_user/add_user', function () {
+    return view('managers/m_user/add_user');
+})->name('managers.m_user.add_user');

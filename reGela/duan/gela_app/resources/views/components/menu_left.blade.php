@@ -43,7 +43,7 @@
 
 
                         </li>
-                        <li class="menu-item {{ request()->is('managers/m_category/manager_category') ? 'active' : '' }}">
+                        <li class="menu-item {{ request()->is('managers/m_category/manager_category') || request()->is('managers/m_category/add_category') || request()->is('managers/m_category/update_category') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_category.manager_category') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-shopping-cart"></i></div>
                                 <div class="text">Category</div>
