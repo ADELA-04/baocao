@@ -61,36 +61,43 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['Đã xảy ra lỗi. Vui lòng thử lại sau.']);
         }
     }
-    public function edit($id)
+    public function edit($userID)
     {
         // Lấy thông tin người dùng theo ID
-        $user = User::findOrFail($id); // Lấy người dùng theo ID
+        $user = User::findOrFail($userID); // Lấy người dùng theo ID
+
         return view('managers.m_user.update_user', compact('user')); // Truyền biến user vào view
     }
 
-public function update(Request $request, $id)
+    public function update(Request $request, $userID)
 {
-    // Xác thực dữ liệu đầu vào
+    // Xác thực dữ liệu
     $request->validate([
-        'Username' => 'required|string|max:50',
-        'Password' => 'nullable|string|min:8|confirmed', // Mật khẩu có thể để trống
-        'Role' => 'required|in:Staff,Admin',
-        'Email' => 'required|email|max:100|unique:Users,Email,' . $id, // Kiểm tra tính duy nhất trừ ID hiện tại
-        'Phone' => 'nullable|string|max:20',
+        'Username' => 'required|max:20',
+        'Email' => 'required|email',
+        'Password' => 'nullable|min:6', // Password có thể để trống
     ]);
 
-    // Cập nhật người dùng
-    $user = User::findOrFail($id);
-    $user->Username = $request->Username;
-    if ($request->Password) {
-        $user->Password = Hash::make($request->Password); // Chỉ cập nhật mật khẩu nếu có giá trị mới
+    // Tìm người dùng và cập nhật thông tin
+    $user = User::findOrFail($userID);
+    $user->Username = $request->input('Username');
+    $user->Email = $request->input('Email');
+
+    // Chỉ cập nhật password nếu nó không rỗng
+    if ($request->filled('Password')) {
+        $user->Password = bcrypt($request->input('Password'));
     }
-    $user->Role = $request->Role;
-    $user->Email = $request->Email;
-    $user->Phone = $request->Phone;
 
-    $user->save();
+    $user->save(); // Lưu thay đổi
 
-    return redirect()->route('managers.m_user.update_user')->with('success', 'User updated successfully!');
+    return redirect()->route('managers.m_user.manager_user')->with('success', 'Cập nhật thành công!');
 }
+public function destroy($userID)
+{
+    $user = User::findOrFail($userID); // Tìm người dùng cần xóa
+    $user->delete(); // Xóa người dùng
+
+    return redirect()->route('managers.m_user.manager_user')->with('success', 'Xóa người dùng thành công!');
+}
+
 }

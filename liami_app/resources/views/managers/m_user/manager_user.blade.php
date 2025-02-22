@@ -32,64 +32,72 @@
 
 {{-- content --}}
 @section('content')
-    <!-- main-content -->
-    <div class="main-content">
+   <!-- main-content -->
+<div class="main-content">
+    <!-- main-content-wrap -->
+    <div class="main-content-inner">
         <!-- main-content-wrap -->
-        <div class="main-content-inner">
-            <!-- main-content-wrap -->
-            <div class="main-content-wrap">
-                <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-                    <h3>All User</h3>
-
-                </div>
-                <!-- all-user -->
-                <div class="wg-box">
-                    <div class="flex items-center justify-between gap10 flex-wrap">
-                        <div class="wg-filter flex-grow">
-                            <form class="form-search">
-                                <fieldset class="name">
-                                    <input type="text" placeholder="Search here..." class="" name="name"
-                                        tabindex="2" value="" aria-required="true" required="">
-                                </fieldset>
-                                <div class="button-submit">
-                                    <button class="" type="submit"><i class="icon-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <a class="tf-button style-1 w208" href="{{ route('managers.m_user.add_user') }}"><i class="icon-plus"></i>Add new</a>
+        <div class="main-content-wrap">
+            <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+                <h3>All User</h3>
+            </div>
+            <!-- all-user -->
+            <div class="wg-box">
+                <div class="flex items-center justify-between gap10 flex-wrap">
+                    <div class="wg-filter flex-grow">
+                        <!-- Hiển thị thông báo thành công -->
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <form class="form-search">
+                            <fieldset class="name">
+                                <input type="text" placeholder="Search here..." class="" name="name"
+                                    tabindex="2" value="" aria-required="true" required="">
+                            </fieldset>
+                            <div class="button-submit">
+                                <button class="" type="submit"><i class="icon-search"></i></button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="wg-table table-all-user">
-                        <ul class="table-title flex gap20 mb-14">
-
-                            <li>
-                                <div class="body-title">Username</div>
-                            </li>
-                            <li>
-                                <div class="body-title">Phone</div>
-                            </li>
-                            <li>
-                                <div class="body-title">Email</div>
-                            </li>
-                            <li>
-                                <div class="body-title">Action</div>
-                            </li>
-                        </ul>
-                        <ul class="flex flex-column">
-                            @foreach ($users as $user)
+                    <a class="tf-button style-1 w208" href="{{ route('managers.m_user.add_user') }}"><i
+                            class="icon-plus"></i>Add new</a>
+                </div>
+                <div class="wg-table table-all-user">
+                    <ul class="table-title flex gap20 mb-14">
+                        <li>
+                            <div class="body-title">Username</div>
+                        </li>
+                        <li>
+                            <div class="body-title">Phone</div>
+                        </li>
+                        <li>
+                            <div class="body-title">Email</div>
+                        </li>
+                        <li>
+                            <div class="body-title">Action</div>
+                        </li>
+                    </ul>
+                    <ul class="flex flex-column">
+                        @foreach ($users as $user)
                             <li class="user-item gap14">
-
                                 <div class="flex items-center justify-between gap20 flex-grow">
                                     <div class="name">
-                                        <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}" class="body-title-2">{{ $user->Username ?? 'N/A' }}</a>
+                                        <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}"
+                                            class="body-title-2">{{ $user->Username ?? 'N/A' }}</a>
                                         <div class="text-tiny mt-3">{{ $user->Role ?? 'N/A' }}</div>
                                     </div>
                                     <div class="body-text">{{ $user->Phone ?? 'N/A' }}</div>
                                     <div class="body-text">{{ $user->Email ?? 'N/A' }}</div>
                                     <div class="list-icon-function">
                                         <div class="item edit">
-                                            <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}"><i class="icon-edit-3"></i></a>                                        </div>
+                                            <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}"><i
+                                                    class="icon-edit-3"></i></a>
+                                        </div>
                                         <div class="item trash">
-                                            <form action="{{ route('managers.m_user.delete_user', $user->UserID) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                            <form action="{{ route('managers.m_user.delete_user', $user->UserID) }}"
+                                                method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" style="border: none; background: none;">
@@ -100,18 +108,17 @@
                                     </div>
                                 </div>
                             </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                        @endforeach
+                    </ul>
                 </div>
-                <!-- /all-user -->
             </div>
-            <!-- /main-content-wrap -->
+            <!-- /all-user -->
         </div>
         <!-- /main-content-wrap -->
-
     </div>
-    <!-- /main-content -->
+    <!-- /main-content-wrap -->
+</div>
+<!-- /main-content -->
 @endsection
 
 

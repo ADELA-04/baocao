@@ -78,6 +78,7 @@
                                         <input class="mb-10" type="text" name="Username" value="{{ old('Username', $user->Username) }}" required>
                                         <div class="text-tiny">Do not exceed 20 characters when entering the username.</div>
                                     </fieldset>
+
                                     <fieldset>
                                         <div class="body-title mb-10">Password</div>
                                         <div class="password-wrapper">
@@ -95,15 +96,19 @@
                                         </div>
                                         <div class="text-tiny">Please confirm your password.</div>
                                     </fieldset>
+
+                                    <fieldset>
                                         <div class="body-title mb-10">Email <span class="tf-color-1">*</span></div>
                                         <input class="mb-10" type="email" name="Email" value="{{ old('Email', $user->Email) }}" required>
                                         <div class="text-tiny">Please enter a valid email address.</div>
                                     </fieldset>
+
                                     <fieldset>
                                         <div class="body-title mb-10">Phone</div>
                                         <input class="mb-10" type="text" name="Phone" value="{{ old('Phone', $user->Phone) }}">
                                         <div class="text-tiny">Optional, up to 20 characters.</div>
                                     </fieldset>
+
                                     <fieldset>
                                         <div class="body-title mb-10">Role <span class="tf-color-1">*</span></div>
                                         <select name="Role" required>
@@ -112,6 +117,7 @@
                                         </select>
                                         <div class="text-tiny">Select the role for the user.</div>
                                     </fieldset>
+
                                     <div class="cols gap10">
                                         <button class="tf-button w-full" type="submit">Save</button>
                                         <a href="{{ route('managers.m_user.manager_user') }}" class="tf-button style-1 w-full">Cancel</a>
