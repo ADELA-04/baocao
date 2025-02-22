@@ -40,22 +40,7 @@
             <div class="main-content-wrap">
                 <div class="flex items-center flex-wrap justify-between gap20 mb-27">
                     <h3>All User</h3>
-                    <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
-                        <li>
-                            <a href="index.html">
-                                <div class="text-tiny">Dashboard</div>
-                            </a>
-                        </li>
-                        <li>
-                            <i class="icon-chevron-right"></i>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="text-tiny">User</div>
-                            </a>
-                        </li>
 
-                    </ul>
                 </div>
                 <!-- all-user -->
                 <div class="wg-box">
@@ -92,20 +77,17 @@
                         <ul class="flex flex-column">
                             @foreach ($users as $user)
                             <li class="user-item gap14">
-                                <div class="image">
-                                    <img src="{{ asset('assets/images/avatar.jpg') }}" alt="">
-                                </div>
+
                                 <div class="flex items-center justify-between gap20 flex-grow">
                                     <div class="name">
-                                        <a href="#" class="body-title-2">{{ $user->Username ?? 'N/A' }}</a>
+                                        <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}" class="body-title-2">{{ $user->Username ?? 'N/A' }}</a>
                                         <div class="text-tiny mt-3">{{ $user->Role ?? 'N/A' }}</div>
                                     </div>
                                     <div class="body-text">{{ $user->Phone ?? 'N/A' }}</div>
                                     <div class="body-text">{{ $user->Email ?? 'N/A' }}</div>
                                     <div class="list-icon-function">
                                         <div class="item edit">
-                                            <a href="{{ route('managers.m_user.update_user', $user->UserID) }}"><i class="icon-edit-3"></i></a>
-                                        </div>
+                                            <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}"><i class="icon-edit-3"></i></a>                                        </div>
                                         <div class="item trash">
                                             <form action="{{ route('managers.m_user.delete_user', $user->UserID) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf

@@ -3,10 +3,9 @@
 {{-- title --}}
 @section('title')
     <title>
-       Update User
+       Upadte User
     </title>
 @endsection
-
 
 {{-- css --}}
 @section('css')
@@ -16,151 +15,117 @@
    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
-
-
-
    <!-- Font -->
    <link rel="stylesheet" href="{{ asset('assets/font/fonts.css') }}">
-
    <!-- Icon -->
    <link rel="stylesheet" href="{{ asset('assets/icon/style.css') }}">
-
    <!-- Favicon and Touch Icons  -->
    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon.png') }}">
 @endsection
+
+@section('css')
+   <!-- Theme Style -->
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate2.min.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animation.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
+   <!-- Font -->
+   <link rel="stylesheet" href="{{ asset('assets/font/fonts.css') }}">
+   <!-- Icon -->
+   <link rel="stylesheet" href="{{ asset('assets/icon/style.css') }}">
+   <!-- Favicon and Touch Icons  -->
+   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
+   <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon.png') }}">
+
+@endsection
+
+{{-- content --}}
 @section('content')
-
-
-<!-- #wrapper -->
 <div id="wrapper">
-    <!-- #page -->
-    <div id="page" class="">
-        <!-- layout-wrap -->
-       <div class="layout-wrap">
-
-            <!-- section-content-right -->
+    <div id="page">
+        <div class="layout-wrap">
             <div class="section-content-right">
-
-                <!-- main-content -->
                 <div class="main-content">
-                    <!-- main-content-wrap -->
                     <div class="main-content-inner">
-                        <!-- main-content-wrap -->
                         <div class="main-content-wrap">
                             <div class="flex items-center flex-wrap justify-between gap20 mb-27">
                                 <h3>Update User</h3>
-                                <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
-                                    <li>
-                                        <a href="index.html"><div class="text-tiny">Dashboard</div></a>
-                                    </li>
-                                    <li>
-                                        <i class="icon-chevron-right"></i>
-                                    </li>
-                                    <li>
-                                        <a href="#"><div class="text-tiny">User</div></a>
-                                    </li>
-                                    <li>
-                                        <i class="icon-chevron-right"></i>
-                                    </li>
-                                    <li>
-                                        <div class="text-tiny">Update User</div>
-                                    </li>
-                                </ul>
                             </div>
-                            <!-- form-add-product -->
-                            <form class="tf-section-2 form-add-product" >
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            <form action="{{ route('managers.m_user.update_user_action', $user->UserID) }}" method="POST">
+                                @csrf
+                                @method('PUT')
                                 <div class="wg-box">
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">Fullname <span class="tf-color-1"></span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the Fullname.</div>
-                                    </fieldset>
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">Phone <span class="tf-color-1"></span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the Phone.</div>
-                                    </fieldset>
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">Address <span class="tf-color-1"></span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the Address.</div>
+                                    <fieldset>
+                                        <div class="body-title mb-10">Username <span class="tf-color-1">*</span></div>
+                                        <input class="mb-10" type="text" name="Username" value="{{ old('Username', $user->Username) }}" required>
+                                        <div class="text-tiny">Do not exceed 20 characters when entering the username.</div>
                                     </fieldset>
                                     <fieldset>
-                                        <div class="body-title mb-10">Upload images</div>
-                                        <div class="upload-image mb-16">
-                                            <div class="item">
-                                                <img src="{{ asset('assets/images/avatar.jpg') }}" alt="">
-                                            </div>
-
-                                            <div class="item up-load">
-                                                <label class="uploadfile" for="myFile">
-                                                    <span class="icon">
-                                                        <i class="icon-upload-cloud"></i>
-                                                    </span>
-                                                    <span class="text-tiny">Drop your images here or select <span class="tf-color">click to browse</span></span>
-                                                    <input type="file" id="myFile" name="filename">
-                                                </label>
-                                            </div>
+                                        <div class="body-title mb-10">Password</div>
+                                        <div class="password-wrapper">
+                                            <input class="mb-10" type="password" name="Password" id="password" placeholder="Enter password">
+                                            <button type="button" id="toggle-password" class="toggle-password"><i class="icon-eye"></i></button>
                                         </div>
+                                        <div class="text-tiny">Leave blank to keep the current password.</div>
                                     </fieldset>
-                                </div>
-                                <div class="wg-box">
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">UserName <span class="tf-color-1">*</span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the username.</div>
+
+                                    <fieldset>
+                                        <div class="body-title mb-10">Confirm Password</div>
+                                        <div class="password-wrapper">
+                                            <input class="mb-10" type="password" name="Password_confirmation" id="password-confirmation" placeholder="Confirm password">
+                                            <button type="button" id="toggle-confirm-password" class="toggle-password"><i class="icon-eye"></i></button>
+                                        </div>
+                                        <div class="text-tiny">Please confirm your password.</div>
                                     </fieldset>
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">Password <span class="tf-color-1">*</span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the Password.</div>
-                                    </fieldset>
-                                    <fieldset class="name">
-                                        <div class="body-title mb-10">RePassword <span class="tf-color-1">*</span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the RePassword.</div>
-                                    </fieldset>
-                                    <fieldset class="name">
                                         <div class="body-title mb-10">Email <span class="tf-color-1">*</span></div>
-                                        <input class="mb-10" type="text" placeholder="Enter product name" name="text" tabindex="0" value="" aria-required="true" required="">
-                                        <div class="text-tiny">entering the Email.</div>
+                                        <input class="mb-10" type="email" name="Email" value="{{ old('Email', $user->Email) }}" required>
+                                        <div class="text-tiny">Please enter a valid email address.</div>
                                     </fieldset>
-                                    <fieldset class="brand">
+                                    <fieldset>
+                                        <div class="body-title mb-10">Phone</div>
+                                        <input class="mb-10" type="text" name="Phone" value="{{ old('Phone', $user->Phone) }}">
+                                        <div class="text-tiny">Optional, up to 20 characters.</div>
+                                    </fieldset>
+                                    <fieldset>
                                         <div class="body-title mb-10">Role <span class="tf-color-1">*</span></div>
-                                        <div class="select">
-                                            <select class="">
-                                                <option>Admin</option>
-                                                <option>Employee</option>
-
-                                            </select>
-                                        </div>
+                                        <select name="Role" required>
+                                            <option value="Admin" {{ $user->Role == 'Admin' ? 'selected' : '' }}>Admin</option>
+                                            <option value="Staff" {{ $user->Role == 'Staff' ? 'selected' : '' }}>Staff</option>
+                                        </select>
+                                        <div class="text-tiny">Select the role for the user.</div>
                                     </fieldset>
                                     <div class="cols gap10">
-                                        <button class="tf-button w-full" type="submit">Save </button>
-                                        <button class="tf-button style-1 w-full" type="submit">Cancel</button>
-
+                                        <button class="tf-button w-full" type="submit">Save</button>
+                                        <a href="{{ route('managers.m_user.manager_user') }}" class="tf-button style-1 w-full">Cancel</a>
                                     </div>
                                 </div>
                             </form>
-                            <!-- /form-add-product -->
                         </div>
-                        <!-- /main-content-wrap -->
                     </div>
-                    <!-- /main-content-wrap -->
-
                 </div>
-                <!-- /main-content -->
             </div>
-            <!-- /section-content-right -->
         </div>
-        <!-- /layout-wrap -->
     </div>
-    <!-- /#page -->
 </div>
-<!-- /#wrapper -->
 @endsection
-
 
 {{-- script --}}
 @section('script')
@@ -172,4 +137,5 @@
    <script src="{{ asset('assets/js2/switcher.js') }}"></script>
    <script src="{{ asset('assets/js2/theme-settings.js') }}"></script>
    <script src="{{ asset('assets/js2/main.js') }}"></script>
+   <script src="{{ asset('assets/js2/custom.js') }}"></script>
 @endsection

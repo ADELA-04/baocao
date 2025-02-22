@@ -296,7 +296,24 @@ sub {
   position: relative;
   vertical-align: baseline;
 }
+.password-wrapper {
+    position: relative;
+}
 
+.password-wrapper input {
+    padding-right: 40px; /* Giữ không gian cho nút bên phải */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px; /* Đặt cách bên phải một chút */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none; /* Xóa viền khi nhấn */
+}
 small {
   font-size: 75%;
 }

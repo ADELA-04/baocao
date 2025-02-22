@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
 Route::get('/managers/m_user/manager_user', [UserController::class, 'index'])->name('managers.m_user.manager_user');
+Route::get('/managers/m_user/add_user', [UserController::class, 'create'])->name('managers.m_user.add_user');
+Route::post('/managers/m_user/manager_user', [UserController::class, 'store'])->name('managers.m_user.store_user');
 
+Route::get('/managers/m_user/users/{id}/edit', [UserController::class, 'edit'])->name('managers.m_user.edit_user');
+Route::put('/managers/m_user/users/{id}', [UserController::class, 'update'])->name('managers.m_user.update_user_action');
 Route::get('/', function () {
     return view('home.index');
 });
