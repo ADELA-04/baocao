@@ -101,9 +101,8 @@
                                             <a href="{{ route('managers.m_user.edit_user', $user->UserID) }}"><i
                                                     class="icon-edit-3"></i></a>
                                         </div>
-                                        <div class="item trash">
-                                            <form action="{{ route('managers.m_user.delete_user', $user->UserID) }}"
-                                                method="POST" onsubmit="return confirm('Are you sure?');">
+                                        <div class="user-item">
+                                            <form action="{{ route('managers.m_user.delete_user', $user->UserID) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" style="border: none; background: none;">
@@ -139,4 +138,5 @@
     <script src="{{ asset('assets/js2/theme-settings.js') }}"></script>
     <script src="{{ asset('assets/js2/main.js') }}"></script>
     <script src="{{ asset('assets/js2/custom.js') }}"></script>
+
 @endsection

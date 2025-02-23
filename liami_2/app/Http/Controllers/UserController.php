@@ -100,20 +100,15 @@ class UserController extends Controller
 
         return redirect()->route('managers.m_user.manager_user')->with('success', 'Cập nhật thành công!');
     }
-    public function destroy($userID)
+    public function destroy($id)
     {
-        // Tìm người dùng theo ID
-        $user = User::find($userID);
+        $user = User::find($id);
 
         if ($user) {
-            // Xóa người dùng
             $user->delete();
-
-            // Chuyển hướng với thông báo thành công
-            return redirect()->route('managers.m_user.manager_user')->with('success', 'Xóa người dùng thành công!');
+            return redirect()->route('managers.m_user.manager_user')->with('success', 'Người dùng đã được xóa!');
         }
 
-        // Nếu không tìm thấy người dùng
         return redirect()->route('managers.m_user.manager_user')->with('error', 'Người dùng không tồn tại.');
     }
 }

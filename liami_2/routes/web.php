@@ -10,10 +10,15 @@ Route::get('/managers/m_user/add_user', [UserController::class, 'create'])->name
 Route::post('/managers/m_user/manager_user', [UserController::class, 'store'])->name('managers.m_user.store_user');
 // Route để sửa người dùng
 Route::get('/managers/m_user/users/{UserID}/edit', [UserController::class, 'edit'])->name('managers.m_user.edit_user');
-Route::put('/managers/m_user/users/{UserID}', [UserController::class, 'update'])->name('managers.m_user.update_user_action');
+Route::put('/managers/m_user/users/{UserID}',
+[UserController::class, 'update'])->
+name('managers.m_user.update_user_action');
 
 // Route để xóa người dùng
-Route::delete('/managers/m_user/delete_user/{id}', [UserController::class, 'destroy'])->name('managers.m_user.delete_user');Route::get('/', function () {
+Route::delete('/managers/m_user/delete_user/{UserID}',
+[UserController::class, 'destroy'])->
+name('managers.m_user.delete_user');
+Route::get('/', function () {
     return view('home.index');
 });
 
@@ -101,4 +106,4 @@ Route::get('/managers/m_user/update_user', function () {
 
 Route::get('/managers/m_user/delete_user', function () {
     return view('managers/m_user/delete_user');
-})->name('managers.m_user.delete_user');
+})->name('managers.m_user.delete_user2');

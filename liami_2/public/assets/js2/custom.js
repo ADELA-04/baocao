@@ -23,8 +23,5 @@ $(document).ready(function() {
         $(this).find('i').toggleClass('icon-eye icon-eye-off');
     });
 });
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('input[name="Username"]').value = '';
-    document.querySelector('input[name="Password"]').value = '';
-});
+
 
