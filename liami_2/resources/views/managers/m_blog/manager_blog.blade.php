@@ -67,30 +67,25 @@
                             </div>
                         </form>
                     </div>
-                    <a class="tf-button style-1 w208" href="add-product.html"><i class="icon-plus"></i>Add new</a>
+                    <a class="tf-button style-1 w208" href="{{ route('managers.m_blog.add_blog') }}"><i class="icon-plus"></i>Add new</a>
                 </div>
                 <div class="wg-table table-product-list">
                     <ul class="table-title flex gap20 mb-14">
                         <li>
                             <div class="body-title">Blog</div>
                         </li>
+
                         <li>
-                            <div class="body-title">Blog ID</div>
+                            <div class="body-title">Author</div>
                         </li>
                         <li>
-                            <div class="body-title">Price</div>
+                            <div class="body-title">Create at</div>
                         </li>
                         <li>
-                            <div class="body-title">Quantity</div>
+                            <div class="body-title">Is Visible</div>
                         </li>
                         <li>
-                            <div class="body-title">Sale</div>
-                        </li>
-                        <li>
-                            <div class="body-title">Stock</div>
-                        </li>
-                        <li>
-                            <div class="body-title">Start date</div>
+                            <div class="body-title">View</div>
                         </li>
                         <li>
                             <div class="body-title">Action</div>
@@ -105,77 +100,14 @@
                                 <div class="name">
                                     <a href="product-list.html" class="body-title-2">Dog Food, Chicken & Chicken Liver Recipe...</a>
                                 </div>
-                                <div class="body-text">#7712309</div>
-                                <div class="body-text">$1,452.500</div>
-                                <div class="body-text">1,638</div>
-                                <div class="body-text">20</div>
-                                <div>
-                                    <div class="block-not-available">Out of stock</div>
-                                </div>
-                                <div class="body-text">$28,672.36</div>
-                                <div class="list-icon-function">
-                                    <div class="item eye">
-                                        <i class="icon-eye"></i>
-                                    </div>
-                                    <div class="item edit">
-                                        <i class="icon-edit-3"></i>
-                                    </div>
-                                    <div class="item trash">
-                                        <i class="icon-trash-2"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
 
-                        <li class="product-item gap14">
-                            <div class="image no-bg">
-                                <img src="images/products/45.png" alt="">
-                            </div>
-                            <div class="flex items-center justify-between gap20 flex-grow">
-                                <div class="name">
-                                    <a href="product-list.html" class="body-title-2">Milk-Bone Mini's Flavor Snacks Dog Treats, 15 Ounce </a>
-                                </div>
-                                <div class="body-text">#7712309</div>
-                                <div class="body-text">$1,452.500</div>
-                                <div class="body-text">1,638</div>
-                                <div class="body-text">20</div>
-                                <div>
-                                    <div class="block-not-available">Out of stock</div>
-                                </div>
-                                <div class="body-text">$28,672.36</div>
+                                <div class="body-text">Đỗ Thị Thơm</div>
+                                <div class="body-text">20/10/2025</div>
+                                <div class="body-text">Hiển thị</div>
+                                <div class="body-text">5</div>
+
                                 <div class="list-icon-function">
-                                    <div class="item eye">
-                                        <i class="icon-eye"></i>
-                                    </div>
-                                    <div class="item edit">
-                                        <i class="icon-edit-3"></i>
-                                    </div>
-                                    <div class="item trash">
-                                        <i class="icon-trash-2"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item gap14">
-                            <div class="image no-bg">
-                                <img src="images/products/46.png" alt="">
-                            </div>
-                            <div class="flex items-center justify-between gap20 flex-grow">
-                                <div class="name">
-                                    <a href="product-list.html" class="body-title-2">Weruva Pumpkin Patch Up! Dog & Cat Food...</a>
-                                </div>
-                                <div class="body-text">#7712309</div>
-                                <div class="body-text">$1,452.500</div>
-                                <div class="body-text">1,638</div>
-                                <div class="body-text">20</div>
-                                <div>
-                                    <div class="block-not-available">Out of stock</div>
-                                </div>
-                                <div class="body-text">$28,672.36</div>
-                                <div class="list-icon-function">
-                                    <div class="item eye">
-                                        <i class="icon-eye"></i>
-                                    </div>
+
                                     <div class="item edit">
                                         <i class="icon-edit-3"></i>
                                     </div>
@@ -215,13 +147,7 @@
         <!-- /main-content-wrap -->
     </div>
     <!-- /main-content-wrap -->
-    <!-- bottom-page -->
-    <div class="bottom-page">
-        <div class="body-text">Copyright © 2024 Remos. Design with</div>
-        <i class="icon-heart"></i>
-        <div class="body-text">by <a href="https://themeforest.net/user/themesflat/portfolio">Themesflat</a> All rights reserved.</div>
-    </div>
-    <!-- /bottom-page -->
+
 </div>
 <!-- /main-content -->
 @endsection

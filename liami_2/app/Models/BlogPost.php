@@ -9,12 +9,15 @@ class BlogPost extends Model
 {
     use HasFactory;
 
-    protected $table = 'BlogPosts';
-    protected $primaryKey = 'PostID';
-    protected $fillable = ['Title', 'Content', 'Summary', 'ImageURL', 'IsVisible', 'AuthorID'];
+    protected $table = 'blog_posts';
 
-    public function author()
-    {
-        return $this->belongsTo(User::class, 'AuthorID', 'UserID');
-    }
+    protected $fillable = [
+        'Title',
+        'Content',
+        'Summary',
+        'ImageURL',
+        'IsVisible',
+        'AuthorID',
+        'views',
+    ];
 }

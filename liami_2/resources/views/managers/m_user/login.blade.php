@@ -28,19 +28,29 @@
                 </h1>
             </div><!-- Logo -->
         </div>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="lg-rg-form d-flex flex-wrap align-items-center justify-content-center position-relative">
 
             <div class="lg-rg-form-inner w-100">
                 <h2 class="mb-0">Sign in to LIAMI</h2>
                 <p class="mb-0">Enter your detail below</p>
-                <form>
+                <form action="{{ url('/login') }}" method="POST">
+                    @csrf
                     <div class="field-box v2 position-relative w-100">
                         <label>Email</label>
-                        <input type="email" required>
+                        <input type="email" name="Email" required>
                     </div>
                     <div class="field-box v2 position-relative w-100">
                         <label>Password</label>
-                        <input type="password" required>
+                        <input type="password" name="Password" required>
                     </div>
                     <div class="field-btn d-flex flex-wrap align-items-center justify-content-between position-relative w-100">
                         <button class="theme-btn bg-color1" type="submit">Sign In<span></span><span></span><span></span><span></span></button>

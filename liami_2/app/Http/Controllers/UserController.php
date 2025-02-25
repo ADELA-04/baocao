@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
+
 class UserController extends Controller
 {
     public function index()
@@ -21,27 +23,29 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Xác thực dữ liệu đầu vào với các điều kiện cụ thể
-        $request->validate([
-            'Username' => 'required|string|max:20', // Tối đa 20 ký tự
-            'Password' => 'required|string|min:8|confirmed', // Tối thiểu 8 ký tự, xác nhận mật khẩu
-            'Role' => 'required|in:Staff,Admin', // Chỉ cho phép 'Staff' hoặc 'Admin'
-            'Email' => 'required|email|max:100|unique:Users,Email', // Địa chỉ email là duy nhất và hợp lệ
-            'Phone' => 'nullable|string|max:20', // Tối đa 20 ký tự, có thể để trống
-        ],
-        // Tùy chỉnh thông báo lỗi
-        [
-            'Username.required' => 'Tên người dùng là bắt buộc.',
-            'Username.max' => 'Tên người dùng không được vượt quá 50 ký tự.',
-            'Password.required' => 'Mật khẩu là bắt buộc.',
-            'Password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-            'Password.confirmed' => 'Mật khẩu xác nhận không khớp.',
-            'Role.required' => 'Vai trò là bắt buộc.',
-            'Email.required' => 'Địa chỉ email là bắt buộc.',
-            'Email.email' => 'Địa chỉ email không hợp lệ.',
-            'Email.max' => 'Địa chỉ email không được vượt quá 100 ký tự.',
-            'Email.unique' => 'Địa chỉ email đã tồn tại.',
-            'Phone.max' => 'Số điện thoại không được vượt quá 20 ký tự.',
-        ]);
+        $request->validate(
+            [
+                'Username' => 'required|string|max:20', // Tối đa 20 ký tự
+                'Password' => 'required|string|min:8|confirmed', // Tối thiểu 8 ký tự, xác nhận mật khẩu
+                'Role' => 'required|in:Staff,Admin', // Chỉ cho phép 'Staff' hoặc 'Admin'
+                'Email' => 'required|email|max:100|unique:Users,Email', // Địa chỉ email là duy nhất và hợp lệ
+                'Phone' => 'nullable|string|max:20', // Tối đa 20 ký tự, có thể để trống
+            ],
+            // Tùy chỉnh thông báo lỗi
+            [
+                'Username.required' => 'Tên người dùng là bắt buộc.',
+                'Username.max' => 'Tên người dùng không được vượt quá 50 ký tự.',
+                'Password.required' => 'Mật khẩu là bắt buộc.',
+                'Password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
+                'Password.confirmed' => 'Mật khẩu xác nhận không khớp.',
+                'Role.required' => 'Vai trò là bắt buộc.',
+                'Email.required' => 'Địa chỉ email là bắt buộc.',
+                'Email.email' => 'Địa chỉ email không hợp lệ.',
+                'Email.max' => 'Địa chỉ email không được vượt quá 100 ký tự.',
+                'Email.unique' => 'Địa chỉ email đã tồn tại.',
+                'Phone.max' => 'Số điện thoại không được vượt quá 20 ký tự.',
+            ]
+        );
 
         try {
             // Tạo người dùng mới
