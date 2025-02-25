@@ -28,8 +28,7 @@ Route::put('/managers/m_user/users/{UserID}',
 name('managers.m_user.update_user_action');
 
 //blog
-Route::get('/blog', [BlogPostController::class, 'index'])->name('managers.m_blog.manager_blog');
-Route::get('/blog/create', [BlogPostController::class, 'create'])->name('blog.create');
+Route::get('/managers/m_blog/manager_blog', [BlogPostController::class, 'index'])->name('managers.m_blog.manager_blog');Route::get('/blog/create', [BlogPostController::class, 'create'])->name('blog.create');
 Route::post('/blog/store', [BlogPostController::class, 'store'])->name('blog.store');
 
 
@@ -41,9 +40,7 @@ Route::get('/', function () {
     return view('managers.m_user.login');
 });
 
-Route::get('/blogs', function () {
-    return view('blogs');
-})->name('blogs');
+
 
 Route::get('/contacts', function () {
     return view('contacts');
@@ -98,9 +95,9 @@ Route::get('/managers/m_category/update_category', function () {
 })->name('managers.m_category.update_category');
 
 
-Route::get('/managers/m_blog/manager_blog', function () {
-    return view('managers/m_blog/manager_blog');
-})->name('managers.m_blog.manager_blog');
+// Route::get('/managers/m_blog/manager_blog', function () {
+//     return view('managers/m_blog/manager_blog');
+// })->name('managers.m_blog.manager_blog');
 
 Route::get('/managers/m_blog/add_blog', function () {
     return view('managers/m_blog/add_blog');
