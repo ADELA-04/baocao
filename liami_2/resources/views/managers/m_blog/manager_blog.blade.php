@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/icon/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon.png') }}">
+
 @endsection
 
 {{-- content --}}
@@ -34,17 +35,7 @@
                 <div class="wg-box">
                     <div class="flex items-center justify-between gap10 flex-wrap">
                         <div class="wg-filter flex-grow">
-                            <div class="show">
-                                <div class="text-tiny">Showing</div>
-                                <div class="select">
-                                    <select class="">
-                                        <option>10</option>
-                                        <option>20</option>
-                                        <option>30</option>
-                                    </select>
-                                </div>
-                                <div class="text-tiny">entries</div>
-                            </div>
+
                             <form class="form-search">
                                 <fieldset class="name">
                                     <input type="text" placeholder="Search here..." name="name" required>
@@ -86,7 +77,7 @@
                                         <img src="{{ asset($blog->ImageURL) }}" alt="Blog Image" >                                    </div>
                                     <div class="flex items-center justify-between gap20 flex-grow">
                                         <div class="name">
-                                            <a href="{{ route('managers.m_blog.update_blog', $blog->Title) }}"
+                                            <a href="{{ route('managers.m_blog.edit_blog', $blog->PostID) }}"
                                                 class="body-title-2">{{ $blog->Title }}</a>
                                         </div>
                                         <div class="body-text">{{ $blog->AuthorID }}</div>
@@ -95,16 +86,17 @@
                                         <div class="body-text">{{ $blog->views }}</div>
                                         <div class="list-icon-function">
                                             <div class="item edit">
-                                                <a href="{{ route('managers.m_blog.update_blog', $blog->PostID) }}"><i
-                                                        class="icon-edit-3"></i></a>
+                                                <a href="{{ route('managers.m_blog.edit_blog', $blog->PostID) }}">
+                                                    <i class="icon-edit-3"></i>
+                                                </a>
                                             </div>
-                                            <div class="item trash">
-                                                <form action="" method="POST" style="display:inline;">
+                                            <div class="user-item">
+                                                <form action="{{ route('managers.m_blog.delete_blog', $blog->PostID) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        style="background:none; border:none; cursor:pointer;"><i
-                                                            class="icon-trash-2"></i></button>
+                                                    <button type="submit" style="border: none; background: none;">
+                                                        <i class="icon-trash-2"></i>
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -115,22 +107,28 @@
                     </div>
                     <div class="divider"></div>
                     <div class="flex items-center justify-between flex-wrap gap10">
-                        <div class="text-tiny">Showing {{ $blogs->count() }} entries</div>
-                        <ul class="wg-pagination">
+                        <div class="text-tiny">Hiện {{ $blogs->count() }} mục</div>
+                        <ul class="wg-pagination flex items-center">
                             <li>
-                                <a href="#"><i class="icon-chevron-left"></i></a>
+                                @if ($blogs->onFirstPage())
+                                    <span class="disabled"><i class="icon-chevron-left"></i></span>
+                                @else
+                                    <a href="{{ $blogs->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
+                                @endif
                             </li>
+
+                            @for ($i = 1; $i <= $blogs->lastPage(); $i++)
+                                <li class="{{ ($blogs->currentPage() == $i) ? 'active' : '' }}">
+                                    <a href="{{ $blogs->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
                             <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon-chevron-right"></i></a>
+                                @if ($blogs->hasMorePages())
+                                    <a href="{{ $blogs->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
+                                @else
+                                    <span class="disabled"><i class="icon-chevron-right"></i></span>
+                                @endif
                             </li>
                         </ul>
                     </div>

@@ -245,7 +245,15 @@ textarea {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.wg-pagination .disabled {
+    color: #ccc; /* Màu chữ cho liên kết không hoạt động */
+    pointer-events: none; /* Không cho phép nhấp chuột */
+}
 
+.wg-pagination .active a {
+    background-color: #007bff; /* Màu nền cho trang đang hoạt động */
+    color: #fff; /* Màu chữ cho trang đang hoạt động */
+}
 img {
   height: auto;
   max-width: 100%;

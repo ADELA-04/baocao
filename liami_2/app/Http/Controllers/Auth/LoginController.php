@@ -45,7 +45,7 @@ class LoginController extends Controller
 
             // Kiểm tra vai trò của người dùng
             if ($user->Role === 'Admin') {
-                return redirect()->route('managers.manager'); // Đường dẫn đến view admin
+                return redirect()->route('managers.index'); // Đường dẫn đến view admin
             } else {
                 return redirect()->route('home.index'); // Đường dẫn đến view staff
             }

@@ -38,7 +38,7 @@
                     <div class="center-heading">Manager</div>
                     <ul class="menu-list">
                         <li
-                            class="menu-item {{ request()->is('managers/m_product/manager_product') || request()->is('managers/m_product/add_product') || request()->is('managers/m_product/update_product') ? 'active' : '' }}">
+                            class="menu-item {{ request()->is('managers/m_product/manager_product') || request()->is('managers/m_product*') || request()->is('managers/m_product/update_product') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_product.manager_product') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-shopping-cart"></i></div>
                                 <div class="text">Products</div>
@@ -48,7 +48,7 @@
 
                         </li>
                         <li
-                            class="menu-item {{ request()->is('managers/m_category/manager_category') || request()->is('managers/m_category/add_category') || request()->is('managers/m_category/update_category') ? 'active' : '' }}">
+                            class="menu-item {{ request()->is('managers/m_category/manager_category') || request()->is('managers/m_category*') || request()->is('managers/m_category/update_category') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_category.manager_category') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-layers"></i></div>
                                 <div class="text">Category</div>
@@ -56,7 +56,7 @@
 
                         </li>
                         <li
-                            class="menu-item {{ request()->is('managers/m_blog/manager_blog') || request()->is('managers/m_blog/add_blog') || request()->is('managers/m_blog/update_blog') ? 'active' : '' }}">
+                            class="menu-item {{ request()->is('managers/m_blog/manager_blog') || request()->is('managers/m_blog*') || request()->is('managers/m_blog/update_blog') ? 'active' : '' }}">
                             <a href="{{ route('managers.m_blog.manager_blog') }}" class="menu-item-button">
                                 <div class="icon"><i class="icon-file-plus"></i></div>
                                 <div class="text">Blog</div>

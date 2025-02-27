@@ -10,7 +10,7 @@ class BlogPost extends Model
     use HasFactory;
 
     protected $table = 'blog_posts';
-
+    protected $primaryKey = 'PostID';
     protected $fillable = [
         'Title',
         'Content',

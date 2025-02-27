@@ -25,7 +25,7 @@
             </div>
             <div class="header-grid">
 
-                <div class="header-item button-dark-light">
+                {{-- <div class="header-item button-dark-light">
                     <i class="icon-moon"></i>
                 </div>
 
@@ -33,7 +33,7 @@
                     <div class="">
                         <i class="icon-maximize"></i>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="popup-wrap user type-header">
                     <div class="dropdown">

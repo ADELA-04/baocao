@@ -116,6 +116,33 @@
                         @endforeach
                     </ul>
                 </div>
+                <div class="divider"></div>
+                    <div class="flex items-center justify-between flex-wrap gap10">
+                        <div class="text-tiny">Hiện {{ $users->count() }} mục</div>
+                        <ul class="wg-pagination flex items-center">
+                            <li>
+                                @if ($users->onFirstPage())
+                                    <span class="disabled"><i class="icon-chevron-left"></i></span>
+                                @else
+                                    <a href="{{ $users->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
+                                @endif
+                            </li>
+
+                            @for ($i = 1; $i <= $users->lastPage(); $i++)
+                                <li class="{{ ($users->currentPage() == $i) ? 'active' : '' }}">
+                                    <a href="{{ $users->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li>
+                                @if ($users->hasMorePages())
+                                    <a href="{{ $users->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
+                                @else
+                                    <span class="disabled"><i class="icon-chevron-right"></i></span>
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
             </div>
             <!-- /all-user -->
         </div>

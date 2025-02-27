@@ -6,14 +6,26 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/managers', [ManagerController::class, 'index'])->name('managers.manager'); // Đường dẫn đến view admin
+Route::get('/managers', [ManagerController::class, 'index'])->name('managers.index'); // Đường dẫn đến view admin
 Route::get('/home', [HomeController::class, 'index'])->name('home.index'); // Đường dẫn đến view staff
 
 
+Route::get('/managers/m_user/add_user', function () {
+    return view('managers/m_user/add_user');
+})->name('managers.m_user.add_user');
+
+Route::get('/managers/m_user/update_user', function () {
+    return view('managers/m_user/update_user');
+})->name('managers.m_user.update_user');
+
+Route::get('/managers/m_user/delete_user', function () {
+    return view('managers/m_user/delete_user');
+})->name('managers.m_user.delete_user2');
 
 
 // Route manager user
@@ -23,19 +35,24 @@ Route::get('/managers/m_user/add_user', [UserController::class, 'create'])->name
 Route::post('/managers/m_user/manager_user', [UserController::class, 'store'])->name('managers.m_user.store_user');
 // Route để sửa người dùng
 Route::get('/managers/m_user/users/{UserID}/edit', [UserController::class, 'edit'])->name('managers.m_user.edit_user');
-Route::put('/managers/m_user/users/{UserID}',
-[UserController::class, 'update'])->
-name('managers.m_user.update_user_action');
-
+Route::put( '/managers/m_user/users/{UserID}',    [UserController::class, 'update'])->name('managers.m_user.update_user_action');
+Route::delete(  '/managers/m_user/delete_user/{UserID}',[UserController::class, 'destroy'])->name('managers.m_user.delete_user');
 //blog
-Route::get('/managers/m_blog/manager_blog', [BlogPostController::class, 'index'])->name('managers.m_blog.manager_blog');Route::get('/blog/create', [BlogPostController::class, 'create'])->name('blog.create');
+Route::get('/managers/m_blog/manager_blog', [BlogPostController::class, 'index'])->name('managers.m_blog.manager_blog');
+Route::get('/blog/create', [BlogPostController::class, 'create'])->name('blog.create');
 Route::post('/blog/store', [BlogPostController::class, 'store'])->name('blog.store');
+// Route to edit a blog post
+Route::get('/managers/m_blog/blogs/{PostID}/edit', [BlogPostController::class, 'edit'])->name('managers.m_blog.edit_blog');
+Route::put('/managers/m_blog/blogs/{PostID}', [BlogPostController::class, 'update'])->name('managers.m_blog.update_blog_action');
+Route::delete('/managers/m_blog/delete_blog/{PostID}', [BlogPostController::class, 'destroy'])->name('managers.m_blog.delete_blog');
 
 
+//category
+Route::get('/managers/m_category/manager_category', [CategoryController::class, 'index'])->name('managers.m_category.manager_category');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/managers/m_category/store', [CategoryController::class, 'store'])->name('managers.m_category.store');
 // Route để xóa người dùng
-Route::delete('/managers/m_user/delete_user/{UserID}',
-[UserController::class, 'destroy'])->
-name('managers.m_user.delete_user');
+
 Route::get('/', function () {
     return view('managers.m_user.login');
 });
@@ -82,9 +99,9 @@ Route::get('/managers/m_product/update_product', function () {
     return view('managers/m_product/update_product');
 })->name('managers.m_product.update_product');
 
-Route::get('/managers/m_category/manager_category', function () {
-    return view('managers/m_category/manager_category');
-})->name('managers.m_category.manager_category');
+// Route::get('/managers/m_category/manager_category', function () {
+//     return view('managers/m_category/manager_category');
+// })->name('managers.m_category.manager_category');
 
 Route::get('/managers/m_category/add_category', function () {
     return view('managers/m_category/add_category');
@@ -112,14 +129,3 @@ Route::get('/managers/m_blog/update_blog', function () {
 //     return view('managers/m_user/manager_user');
 // })->name('managers.m_user.manager_user');
 
-Route::get('/managers/m_user/add_user', function () {
-    return view('managers/m_user/add_user');
-})->name('managers.m_user.add_user');
-
-Route::get('/managers/m_user/update_user', function () {
-    return view('managers/m_user/update_user');
-})->name('managers.m_user.update_user');
-
-Route::get('/managers/m_user/delete_user', function () {
-    return view('managers/m_user/delete_user');
-})->name('managers.m_user.delete_user2');
