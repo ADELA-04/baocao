@@ -51,6 +51,11 @@ Route::delete('/managers/m_blog/delete_blog/{PostID}', [BlogPostController::clas
 Route::get('/managers/m_category/manager_category', [CategoryController::class, 'index'])->name('managers.m_category.manager_category');
 Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/managers/m_category/store', [CategoryController::class, 'store'])->name('managers.m_category.store');
+Route::get('category/{CategoryID}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('category/{CategoryID}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+
 // Route để xóa người dùng
 
 Route::get('/', function () {

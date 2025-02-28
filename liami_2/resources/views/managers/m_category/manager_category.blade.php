@@ -35,6 +35,23 @@
                 <div class="flex items-center flex-wrap justify-between gap20 mb-27">
                     <h3>Category Manager</h3>
                 </div>
+{{-- Thông báo thành công --}}
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+{{-- Thông báo lỗi --}}
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
                 <div class="wg-box">
                     <div class="flex items-center justify-between gap10 flex-wrap">
@@ -64,16 +81,16 @@
                                     <li class="product-item gap14">
                                         <div class="flex items-center justify-between gap20 flex-grow">
                                             <div class="name">
-                                                <a href="#" class="body-title-2">{{ $category->CategoryName }}</a>
+                                                <a href="{{ route('category.edit',$category->CategoryID) }}" class="body-title-2">{{ $category->CategoryName }}</a>
                                             </div>
                                             <div class="list-icon-function">
                                                 <div class="item edit">
-                                                    <a href="{{ route('managers.m_category.update_category', $category->CategoryID) }}">
+                                                    <a href="{{ route('category.edit',$category->CategoryID) }}">
                                                         <i class="icon-edit-3"></i>
                                                     </a>
                                                 </div>
                                                 <div class="user-item">
-                                                    <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                    <form action="{{ route('category.destroy', $category->CategoryID) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" style="border:none; background:none;">

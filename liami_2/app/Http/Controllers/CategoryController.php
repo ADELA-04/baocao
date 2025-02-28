@@ -43,4 +43,48 @@ public function store(Request $request)
                          ->with('error', 'Failed to add category: ' . $e->getMessage());
     }
 }
+public function edit($CategoryID)
+{
+    $category = Category::findOrFail($CategoryID);
+    $parentCategories = Category::all(); // Get all categories for the parent selection.
+    return view('managers.m_category.update_category', compact('category', 'parentCategories'));
+}
+
+public function update(Request $request, $CategoryID)
+{
+    $request->validate([
+        'CategoryName' => 'required|string',
+        'parent_id' => 'nullable|exists:categories,CategoryID',
+        'IsVisible' => 'required|boolean',
+    ]);
+
+    try {
+        $category = Category::findOrFail($CategoryID);
+        $category->update([
+            'CategoryName' => $request->CategoryName,
+            'parent_id' => $request->parent_id,
+            'IsVisible' => $request->IsVisible,
+        ]);
+
+        return redirect()->route('managers.m_category.manager_category')
+                         ->with('success', 'Category updated successfully.');
+    } catch (\Exception $e) {
+        return redirect()->route('managers.m_category.manager_category')
+                         ->with('error', 'Failed to update category: ' . $e->getMessage());
+    }
+}
+public function destroy($id)
+{
+    try {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('managers.m_category.manager_category')
+                         ->with('success', 'Xóa danh mục thành công.');
+    } catch (\Exception $e) {
+        Log::error('Failed to delete category: ' . $e->getMessage());
+        return redirect()->route('managers.m_category.manager_category')
+                         ->with('error', 'Xóa danh mục thất bại: ' . $e->getMessage());
+    }
+}
 }
