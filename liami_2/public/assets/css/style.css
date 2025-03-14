@@ -235,6 +235,45 @@ footer {
   position: relative;
   width: 100%;
 }
+body {
+    font-family: 'Roboto', sans-serif; /* Thay 'Roboto' bằng tên font bạn chọn */
+}
+
+.product-info h4 {
+    font-family: 'Roboto', sans-serif; /* Đảm bảo sử dụng font hỗ trợ tiếng Việt */
+}
+.product-info h4 {
+    white-space: nowrap; /* Không cho phép xuống dòng */
+    overflow: hidden; /* Ẩn phần thừa ra ngoài */
+    text-overflow: ellipsis; /* Hiển thị "..." nếu không đủ chỗ */
+    max-width: 100%; /* Chiều rộng tối đa */
+}
+            .product-img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    height: 250px; /* Chiều cao cố định */
+    overflow: hidden; /* Ẩn phần thừa ra ngoài */
+    position: relative; /* Để có thể dùng cho các vị trí tuyệt đối bên trong */
+    display: flex; /* Sử dụng flexbox để căn giữa hình ảnh */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.product-img img {
+    width: 100%; /* Đặt chiều rộng của hình ảnh bằng 100% của phần tử chứa */
+    height: 220px;/* Đảm bảo hình ảnh không vượt quá chiều cao */
+    object-fit: cover; /* Giữ tỷ lệ khung hình và hiển thị toàn bộ hình ảnh */
+}
+
+
+.product-thumb img {
+   /* Đặt chiều cao cố định */
+    object-fit: cover; /* Giữ tỉ lệ khung hình và cắt bớt nếu cần */
+}
+.product-name {
+    white-space: nowrap;          /* Ngăn không cho text xuống dòng */
+    overflow: hidden;             /* Ẩn phần nội dung vượt quá */
+    text-overflow: ellipsis;      /* Thêm dấu ba chấm (...) */
+}
 
 /*=== Paddings ===*/
 .pt-10 {padding-top: 0.625rem;}

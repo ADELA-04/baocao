@@ -45,9 +45,9 @@ class LoginController extends Controller
 
             // Kiểm tra vai trò của người dùng
             if ($user->Role === 'Admin') {
-                return redirect()->route('managers.index'); // Đường dẫn đến view admin
+                return redirect()->route('managers.manager'); // Đường dẫn đến view admin
             } else {
-                return redirect()->route('home.index'); // Đường dẫn đến view staff
+                return redirect()->route('managers.manager'); // Đường dẫn đến view staff
             }
         }
 
@@ -60,6 +60,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login'); // Hoặc đường dẫn khác
+        return redirect()->route('TrangIndex'); // Hoặc đường dẫn khác
     }
 }

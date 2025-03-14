@@ -56,9 +56,9 @@
                 <div class="wg-box">
                     <div class="flex items-center justify-between gap10 flex-wrap">
                         <div class="wg-filter flex-grow">
-                            <form class="form-search">
+                            <form class="form-search" method="GET" action="{{ route('managers.m_category.manager_category') }}">
                                 <fieldset class="name">
-                                    <input type="text" placeholder="Search here..." name="name" required>
+                                    <input type="text" placeholder="Search by Category Name..." name="name" required value="{{ request('name') }}">
                                 </fieldset>
                                 <div class="button-submit">
                                     <button type="submit"><i class="icon-search"></i></button>
@@ -77,6 +77,9 @@
                         </ul>
                         <ul class="flex flex-column">
                             @if(isset($categories) && $categories->isNotEmpty())
+                              @if ($categories->isEmpty())
+            <li class="no-results">Không tìm thấy danh mục nào với từ khóa "{{ $search }}".</li>
+        @else
                                 @foreach ($categories as $category)
                                     <li class="product-item gap14">
                                         <div class="flex items-center justify-between gap20 flex-grow">
@@ -102,15 +105,39 @@
                                         </div>
                                     </li>
                                 @endforeach
+                                @endif
                             @else
                                 <li class="product-item">Không có danh mục nào.</li>
                             @endif
                         </ul>
                     </div>
-                    {{-- <div class="flex items-center justify-between flex-wrap gap10">
-                        <div class="text-tiny">Showing {{ $categories->count() }} entries</div>
-                        {{ $categories->links() }} <!-- Thêm phân trang -->
-                    </div> --}}
+                    <div class="divider"></div>
+                    <div class="flex items-center justify-between flex-wrap gap10">
+                        <div class="text-tiny">Hiện {{ $categories->count() }}/10 mục</div>
+                        <ul class="wg-pagination flex items-center">
+                            <li>
+                                @if ($categories->onFirstPage())
+                                    <span class="disabled"><i class="icon-chevron-left"></i></span>
+                                @else
+                                    <a href="{{ $categories->previousPageUrl() }}"><i class="icon-chevron-left"></i></a>
+                                @endif
+                            </li>
+
+                            @for ($i = 1; $i <= $categories->lastPage(); $i++)
+                                <li class="{{ ($categories->currentPage() == $i) ? 'active' : '' }}">
+                                    <a href="{{ $categories->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+
+                            <li>
+                                @if ($categories->hasMorePages())
+                                    <a href="{{ $categories->nextPageUrl() }}"><i class="icon-chevron-right"></i></a>
+                                @else
+                                    <span class="disabled"><i class="icon-chevron-right"></i></span>
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

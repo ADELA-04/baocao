@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\Setting;
+use App\Models\Apparence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 class CategoryController extends Controller
 {
-    public function index()
-{
-    $categories = Category::orderBy('created_at', 'desc')->paginate(10);
-    // dd($categories);
-    return view('managers.m_category.manager_category', compact('categories'));
-}
+    public function index(Request $request)
+    {
+        try {
+            // Lấy từ khóa tìm kiếm từ request
+            $search = $request->input('name'); // Tên biến tìm kiếm
+
+            // Lấy tất cả danh mục, sắp xếp theo thời gian tạo giảm dần
+            $categories = Category::when($search, function ($query) use ($search) {
+                    return $query->whereRaw('LOWER(CategoryName) LIKE ?', [strtolower($search) . '%']); // Tìm kiếm không phân biệt hoa thường từ ký tự đầu
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(10); // Lấy 10 danh mục mỗi trang
+
+            return view('managers.m_category.manager_category', compact('categories', 'search')); // Truyền dữ liệu đến view
+        } catch (\Exception $e) {
+            Log::error($e->getMessage()); // Ghi lại lỗi vào log
+            return redirect()->back()->with('error', 'Có lỗi xảy ra khi lấy dữ liệu.');
+        }
+    }
+
 public function create()
 {
     // dd('create method is called');
@@ -73,18 +89,16 @@ public function update(Request $request, $CategoryID)
                          ->with('error', 'Failed to update category: ' . $e->getMessage());
     }
 }
-public function destroy($id)
+public function destroy($CategoryID)
 {
-    try {
-        $category = Category::findOrFail($id);
-        $category->delete();
+    $category = Category::find($CategoryID);
 
-        return redirect()->route('managers.m_category.manager_category')
-                         ->with('success', 'Xóa danh mục thành công.');
-    } catch (\Exception $e) {
-        Log::error('Failed to delete category: ' . $e->getMessage());
-        return redirect()->route('managers.m_category.manager_category')
-                         ->with('error', 'Xóa danh mục thất bại: ' . $e->getMessage());
-    }
+        if ($category) {
+            $category->delete(); // Delete the blog post
+            return redirect()->route('managers.m_category.manager_category')->with('success', 'Category deleted successfully!');
+        }
+
+        return redirect()->route('managers.m_category.manager_category')->with('error', 'Category does not exist.');
+
 }
 }

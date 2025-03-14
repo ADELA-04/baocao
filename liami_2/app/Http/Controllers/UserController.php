@@ -6,14 +6,29 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::orderBy('created_at', 'desc')->paginate(10);;
-        return view('managers.m_user.manager_user', compact('users'));
+    public function index(Request $request)
+{
+    try {
+        // Lấy từ khóa tìm kiếm từ request
+        $search = $request->input('email'); // Tên biến tìm kiếm
+
+        // Lấy tất cả người dùng, sắp xếp theo thời gian tạo giảm dần
+        $users = User::when($search, function ($query) use ($search) {
+                return $query->where('Email', 'like', strtolower($search) . '%'); // Tìm kiếm theo email bắt đầu bằng từ khóa
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10); // Lấy 10 người dùng mỗi trang
+
+        return view('managers.m_user.manager_user', compact('users', 'search')); // Truyền dữ liệu đến view
+    } catch (\Exception $e) {
+        Log::error($e->getMessage()); // Ghi lại lỗi vào log
+        return redirect()->back()->with('error', 'Có lỗi xảy ra khi lấy dữ liệu.');
     }
+}
 
     public function create()
     {
@@ -115,4 +130,50 @@ class UserController extends Controller
 
         return redirect()->route('managers.m_user.manager_user')->with('error', 'Người dùng không tồn tại.');
     }
+
+    public function editProfile()
+{
+    // Lấy thông tin người dùng hiện tại
+    $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
+
+    return view('acounts.profile_admin', compact('user')); // Truyền biến user vào view
+}
+
+public function updateProfile(Request $request)
+{
+    // Xác thực dữ liệu
+    $request->validate([
+        'Username' => 'required',
+        'Email' => 'required|email',
+        'Phone' => 'nullable|string',
+        'Avartar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Kiểm tra hình ảnh
+    ]);
+
+    // Lấy thông tin người dùng hiện tại
+    $user = Auth::user();
+
+    // Cập nhật thông tin người dùng
+    $user->Username = $request->input('Username');
+    $user->Email = $request->input('Email');
+    $user->Phone = $request->input('Phone');
+
+    if ($request->hasFile('Avartar')) {
+        $file = $request->file('Avartar');
+
+        if ($file->isValid()) {
+            $originalName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('assets/images3'), $originalName);
+            $user->Avartar = 'assets/images3/' . $originalName; // Update the image URL
+        }
+    }
+
+    try {
+       $user->save();
+    } catch (\Exception $e) {
+
+        return redirect()->route('profile.edit')->withErrors(['error' => 'Đã xảy ra lỗi khi cập nhật hồ sơ.']);
+    }
+
+    return redirect()->route('profile.edit')->with('success', 'Cập nhật hồ sơ thành công!');
+}
 }

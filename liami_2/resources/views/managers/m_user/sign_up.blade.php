@@ -15,7 +15,35 @@
 <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+<style>
+    .field-box {
+        position: relative; /* Để có thể định vị các phần tử con */
+    }
 
+    .input-container {
+        position: relative; /* Để có thể định vị nút toggle bên trong */
+    }
+
+    input[type="password"] {
+        padding-right: 40px; /* Tạo khoảng trống cho biểu tượng */
+        width: 100%; /* Đảm bảo ô nhập chiếm toàn bộ chiều rộng */
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 60px; /* Đặt nút ở bên phải */
+        transform: translateY(-50%); /* Căn giữa chính xác */
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #aaa; /* Màu sắc cho biểu tượng */
+        z-index: 1; /* Đảm bảo biểu tượng nằm trên ô input */
+    }
+
+    .toggle-password:hover {
+        color: #333; /* Màu sắc khi hover */
+    }
+    </style>
 @endsection
 @section('content')
 <section>
@@ -48,7 +76,8 @@
                     </div>
                     <div class="field-box v2 position-relative w-100">
                         <label>Password</label>
-                        <input type="password" required>
+                        <input type="password" name="Password" required id="password">
+                        <button type="button" id="toggle-password" class="toggle-password"><i class="fas fa-eye"></i></button>
                     </div>
                     <div class="field-btn d-flex flex-wrap align-items-center justify-content-between position-relative w-100">
                         <button class="theme-btn bg-color1" type="submit">Create An Account<span></span><span></span><span></span><span></span></button>
@@ -72,4 +101,5 @@
 <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+<script src="{{ asset('assets/js2/custom.js') }}"></script>
 @endsection

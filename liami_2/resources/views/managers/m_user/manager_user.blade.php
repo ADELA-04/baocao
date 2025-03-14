@@ -57,15 +57,14 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                        <form class="form-search">
-                            <fieldset class="name">
-                                <input type="text" placeholder="Search here..." class="" name="name"
-                                    tabindex="2" value="" aria-required="true" required="">
-                            </fieldset>
-                            <div class="button-submit">
-                                <button class="" type="submit"><i class="icon-search"></i></button>
-                            </div>
-                        </form>
+                    <form class="form-search" method="GET" action="{{ route('managers.m_user.manager_user') }}">
+                        <fieldset class="name">
+                            <input type="text" placeholder="Search by email..." name="email" required value="{{ request('email') }}">
+                        </fieldset>
+                        <div class="button-submit">
+                            <button type="submit"><i class="icon-search"></i></button>
+                        </div>
+                    </form>
                     </div>
                     <a class="tf-button style-1 w208" href="{{ route('managers.m_user.add_user') }}"><i
                             class="icon-plus"></i>Add new</a>
@@ -86,6 +85,9 @@
                         </li>
                     </ul>
                     <ul class="flex flex-column">
+                        @if ($users->isEmpty())
+                        <li class="no-results">Không tìm thấy người dùng nào với từ khóa "{{ $search }}".</li>
+                    @else
                         @foreach ($users as $user)
                             <li class="user-item gap14">
                                 <div class="flex items-center justify-between gap20 flex-grow">
@@ -114,11 +116,12 @@
                                 </div>
                             </li>
                         @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div class="divider"></div>
                     <div class="flex items-center justify-between flex-wrap gap10">
-                        <div class="text-tiny">Hiện {{ $users->count() }} mục</div>
+                        <div class="text-tiny">Hiện {{ $users->count() }}/10 mục</div>
                         <ul class="wg-pagination flex items-center">
                             <li>
                                 @if ($users->onFirstPage())

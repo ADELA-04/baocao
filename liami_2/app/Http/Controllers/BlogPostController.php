@@ -9,17 +9,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 class BlogPostController extends Controller
 {
-    public function index()
-    {
-        try {
-            // Lấy tất cả bài viết blog, sắp xếp theo thời gian tạo giảm dần
-            $blogs = BlogPost::orderBy('created_at', 'desc')->paginate(10); // Lấy 10 bài viết mỗi trang
-            return view('managers.m_blog.manager_blog', compact('blogs')); // Truyền dữ liệu đến view
-        } catch (\Exception $e) {
-            Log::error($e->getMessage()); // Ghi lại lỗi vào log
-            return redirect()->back()->with('error', 'Có lỗi xảy ra khi lấy dữ liệu.');
-        }
+    public function index(Request $request)
+{
+    try {
+        // Lấy từ khóa tìm kiếm từ request
+        $search = $request->input('name');
+
+        // Lấy tất cả bài viết blog, sắp xếp theo thời gian tạo giảm dần
+        $blogs = BlogPost::when($search, function ($query) use ($search) {
+            return $query->where('Title', 'like', strtolower($search) . '%'); // Tìm kiếm chỉ bắt đầu từ ký tự đầu
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10); // Lấy 10 bài viết mỗi trang
+
+        return view('managers.m_blog.manager_blog', compact('blogs', 'search')); // Truyền dữ liệu đến view
+    } catch (\Exception $e) {
+        Log::error($e->getMessage()); // Ghi lại lỗi vào log
+        return redirect()->back()->with('error', 'Có lỗi xảy ra khi lấy dữ liệu.');
     }
+}
     public function create()
     {
         return view('managers.m_blog.create_blog'); // Trả về view tạo blog

@@ -21,21 +21,19 @@
 @endsection
 @section('content')
 <section>
-    <div class="page-top-wrap w-100 pt-30 bg-color22 pb-110 position-relative">
-        <div class="fixed-bg" style="background-image: url(assets/images/top-banner-bg.jpg);"></div>
+    <div class="page-top-wrap w-100 pt-20 bg-color22 pb-20 position-relative">
         <div class="container">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="index.html" title="">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" title="">Home</a></li>
                 <li class="breadcrumb-item active">Contact</li>
             </ol>
-            <div class="page-title w-100">
-                <span class="d-block text-color4">- Contact</span>
-                <h2 class="mb-0">Contact Us</h2>
-            </div><!-- Page Title -->
         </div>
     </div>
 </section>
 <section>
+    @foreach ($settings as $setting)
+
+
     <div class="w-100 pt-120 pb-120 position-relative">
         <div class="container">
             <div class="contact-wrap position-relative w-100">
@@ -43,31 +41,34 @@
                     <div class="row mrg">
                         <div class="col-md-12 col-sm-12 col-lg-6">
                             <div class="contact-info position-relative w-100">
-                                <h3>Hà Nội</h3>
+                                <h3>Information Shop</h3>
                                 <ul class="contact-info-list d-flex flex-wrap list-unstyled mb-0">
                                     <li>
+                                        <span class="d-block">Business Name</span>
+                                        <p class="mb-0">{{ $setting->BusinessName }}</p>
+                                    </li>
+                                    <li>
+                                        <span class="d-block">Boss Name</span>
+                                        <p class="mb-0">{{ $setting->BossName }}</p>
+                                    </li>
+                                    <li>
                                         <span class="d-block">Phone</span>
-                                        <p class="mb-0"><a href="tel:(302) 555-0107" title="">84+ 0963215791</a></p>
-                                        <p class="mb-0"><a href="tel:(225) 555-0118" title="">84+ 0963215791</a></p>
+                                        <p class="mb-0">{{ $setting->Phone }}</p>
                                     </li>
                                     <li>
                                         <span class="d-block">Address</span>
-                                        <p class="mb-0">Soc Son, Ha Noi, Viet Nam</p>
+                                        <p class="mb-0">{{ $setting->Address }}</p>
                                     </li>
                                     <li>
                                         <span class="d-block">Email</span>
-                                        <p class="mb-0"><a href="mailto:dothom07082004@gmail.com" title="">dothom07082004@gmail.com</a></p>
-                                    </li>
-                                    <li>
-                                        <span class="d-block">Social</span>
-                                        <div class="social-links d-flex flex-wrap">
+                                        <p class="mb-0">{{ $setting->Email }}</p>
+                                        <span class="d-block mt-20">Social</span>
+                                        <div class=" social-links d-flex flex-wrap">
                                             <a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
                                             <a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                                            <a href="https://www.twitter.com/" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                                            <a href="https://www.youtube.com/" title="Youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                                            <a href="https://www.pinterest.com/" title="Pinterest" target="_blank"><i class="fab fa-pinterest-p"></i></a>
                                         </div>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -80,14 +81,11 @@
                 </div><!-- Contact Information & Map -->
                 <div class="contact-form-wrap mt-60 bg-color5 position-relative w-100">
                     <div class="row mrg">
-                        <div class="col-md-12 col-sm-12 col-lg-6">
-                            <img class="img-fluid w-100" src="assets/images/resources/contact-img.jpg" alt="Contact Image">
-                        </div>
+
                         <div class="col-md-12 col-sm-12 col-lg-6">
                             <div class="contact-form w-100">
                                 <h3>Send us a message</h3>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <form action="#" method="post" id="email-form">
+                                <form action="#" method="post" id="email-form" class="mt-20">
                                     <div class="form-group w-100">
                                         <div class="response w-100"></div>
                                     </div>
@@ -114,6 +112,7 @@
             </div><!-- Contact Wrap -->
         </div>
     </div>
+    @endforeach
 </section>
 
 @endsection

@@ -6,48 +6,55 @@
             <div class="footer-data position-relative w-100">
                 <div class="row mrg30">
                     <div class="col-md-3 col-sm-6 col-lg-3">
-                        <div class="widget w-100">
-                            <div class="logo"><h1 class="mb-0"><a href="{{ asset('index.html') }}" title="Home"><img class="img-fluid" src="{{ asset('assets/images/logo.svg') }}" alt="Logo"></a></h1></div><!-- Logo -->
+                        @foreach ($apparences as $apparence )
+                        <div class="widget w-150">
+                            <div class="logo">
+
+                                <h1 class="mb-0"><a href="{{ $apparence->NavigationLinks }}" title="Home"><img
+                                    src="{{ asset($apparence->LogoURL) }}" alt="Logo"></a></h1>
+
+                            </div><!-- Logo -->
                             <div class="social-links d-flex flex-wrap">
-                                <a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.twitter.com/" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.youtube.com/" title="Youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.pinterest.com/" title="Pinterest" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="{{ $apparence->LinkFB }}" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{ $apparence->LinkIN }}" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+
+
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="col-md-3 col-sm-6 col-lg-3">
+                    <div class="col-md-2 col-sm-6 col-lg-2">
                         <div class="widget w-100">
                             <h5>Shop</h5>
                             <ul>
-                                <li><a href="{{ asset('product-detail.html') }}" title="">Shop Women</a></li>
-                                <li><a href="{{ asset('product-detail2.html') }}" title="">Shop Men</a></li>
-                                <li><a href="{{ asset('product-detail3.html') }}" title="">Blog</a></li>
+                                @foreach ($categories as $category)
+                                <li><a href="{{ asset('product-detail.html') }}" title="">{{ $category->CategoryName }}</a></li>
+                                @endforeach
 
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-lg-3">
+                    <div class="col-md-2 col-sm-6 col-lg-2">
                         <div class="widget w-100">
                             <h5>Liami</h5>
                             <ul>
                                 <li><a href="{{ asset('blog-detail.html') }}" title="">Blog</a></li>
                                 <li><a href="{{ asset('audio.html') }}" title="">Contact</a></li>
-                                <li><a href="{{ asset('video.html') }}" title="">About</a></li>
                                 <li><a href="{{ asset('quote.html') }}" title="">Help</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-lg-3">
+                    <div class="col-md-5 col-sm-6 col-lg-5">
                         <div class="widget w-100">
-                            <h5>Company</h5>
+                            @foreach ($settings as $setting)
+                            <h5>{{ $setting->BusinessName }}</h5>
                             <ul>
-                                <li><a href="{{ asset('about.html') }}" title="">About</a></li>
-                                <li><a href="{{ asset('content-elements.html') }}" title="">Content Elements</a></li>
-                                <li><a href="{{ asset('faq.html') }}" title="">Help</a></li>
-                                <li><a href="{{ asset('contact.html') }}" title="">Contact</a></li>
+                                <li><span style="font-weight: bold">Representative: </span>{{ $setting->BossName }}</li>
+                                <li><span style="font-weight: bold">Address: </span> {{ $setting->Address }}</li>
+                                <li><span style="font-weight: bold">Hotline: </span> {{ $setting->Phone }}</li>
+                                <li><span style="font-weight: bold">Email: </span>{{ $setting->Email }}</li>
                             </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -36,14 +36,18 @@
             <!-- layout-wrap -->
             <div class="layout-wrap">
                 <!-- preload -->
-                <div id="preload" class="preload-container">
+                {{-- <div id="preload" class="preload-container">
                     <div class="preloading">
                         <span></span>
                     </div>
-                </div>
+                </div> --}}
                 <!-- /preload -->
                 {{-- menu_left --}}
+                @if (Auth::user()->Role=='Admin')
                 @include('components.menu_left')
+            @else
+                @include('components.menu_left_nv')
+            @endif
                 <!-- section-content-right -->
                 <div class="section-content-right">
                     @include('components.header_manager')
